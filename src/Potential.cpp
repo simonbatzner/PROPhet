@@ -613,7 +613,7 @@ REAL Potential::train() {
 
 void Potential::optimize_Gs() {
     int counter = 0;
-    vector <vector<REAL>> G1, G2, G3, G4;
+    vector <vector<REAL> > G1, G2, G3, G4;
 
     REAL T = params.T0;
     int Naccepted;
@@ -837,7 +837,7 @@ void Potential::forces() {
 
     for (int i_sys = 0; i_sys < systems.size(); i_sys++) {
         int nlocal = systems[i_sys]->structure.pos.size();
-        vector <vector<REAL>> dE_dG(nlocal, vector<REAL>(1, 0.0));
+        vector <vector<REAL> > dE_dG(nlocal, vector<REAL>(1, 0.0));
         vector<REAL> my_outputs(nlocal, 0.0);
         for (int atom = 0; atom < systems[i_sys]->structure.Natom; atom++) {
             //my_outputs[atom] += nets[systems[i_sys]->structure.types[atom].atomic_number()]->evaluate_MD(dE_dG[atom]);
@@ -1061,7 +1061,7 @@ void Potential::create_system_map() {
 
     if (!this->system_map.empty()) { return; }
 
-    vector <vector<int>> by_node(mpi->Nprocs(), vector<int>(0));
+    vector <vector<int> > by_node(mpi->Nprocs(), vector<int>(0));
     this->system_map.assign(Nsystems, 0);
 
     int proc = 0;
