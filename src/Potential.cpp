@@ -110,8 +110,8 @@ systems (systems_in), params(F_in) {
         }
 
 
-        stringsteam ss;
-        ss << mpi_rank() << ".gvector";
+        stringstream ss;
+        ss << mpi->rank() << ".gvector";
         ofstream gvectors;
         gvectors.open(ss.str().c_str());
         if (!systems[0]->structure.is_initialized()) {
